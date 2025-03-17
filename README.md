@@ -1,6 +1,6 @@
 # Employee and Area Management API
 
-This project is a **REST API** developed with **Node.js, Express, and Sequelize** that enables the management of employees and areas within an organization. It is designed to integrate with a frontend and uses **MySQL** as its database.
+This project follows a **Client-Server Architecture**, where the backend serves as a **REST API** developed with **Node.js, Express, and Sequelize** to manage employees and areas within an organization. It communicates with a frontend client built in **Angular 19** and uses **MySQL** as its database.
 
 ---
 
