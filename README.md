@@ -58,7 +58,25 @@ cd empleados-backend
 npm install
 ```
 
-### Configure the database in `config/database.config.ts`.
+### Configure the environment variables:
+
+1. Copy the example environment file:
+
+   ```sh
+   cp .env.example .env
+   ```
+
+2. Open `.env` and set your database connection details:
+
+   ```sh
+   DB_NAME=your_database_name #example: db-employees
+   DB_USER=your_database_user #example: root
+   DB_PASS=your_database_password
+   DB_HOST=your_database_host #example: 127.0.0.1
+   DB_DIALECT=mysql
+   ```
+
+### Configure the database in `config/database.config.ts` if necessary.
 
 ### Run the API in development mode:
 
