@@ -108,5 +108,12 @@ The API will be available at: **[http://localhost:3000/api](http://localhost:300
 
 ---
 
+## 🔗 Related Projects
+
+This API is designed to work with the **Employee and Area Management Frontend**, built with **Angular 19**.  
+You can find the frontend repository here: [empleados-frontend](https://github.com/rfloresj/empleados-frontend)
+
+---
+
 This API provides a **scalable and efficient** way to manage employees and areas in an organization. 🚀
 
