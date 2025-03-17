@@ -10,6 +10,7 @@ This project follows a **Client-Server Architecture**, where the backend serves 
 - 🏢 **Entity Relationships**: Employees are associated with an area.
 - 🔗 **REST API**: Structured to facilitate communication with frontend clients.
 - ⚡ **Express & Sequelize**: Efficient frameworks for handling routes and databases.
+- 🔒 **JWT Authentication**: Secure authentication using JSON Web Tokens.
 - 🛑 **Error Handling & Validations**: Duplicate control and database constraints.
 - 🔒 **CORS Enabled**: Allows communication between the backend and frontend.
 
@@ -19,12 +20,15 @@ This project follows a **Client-Server Architecture**, where the backend serves 
 
 ```bash
 📦 empleados-backend
+ ┣ 📂 config
+ ┃ ┣ 📜 config.json  # General backend configurations
+ ┃ ┗ 📜 database.config.ts  # Database configuration
  ┣ 📂 src
- ┃ ┣ 📂 controllers   # Employee and area controllers
+ ┃ ┣ 📂 controllers   # Employee, area, and auth controllers
  ┃ ┣ 📂 models        # Sequelize model definitions
+ ┃ ┣ 📂 middlewares   # Middleware for authentication
  ┃ ┣ 📂 routes        # API routes
  ┃ ┣ 📜 index.ts      # Main server file
- ┃ ┗ 📜 database.config.ts  # Database configuration
  ┣ 📜 package.json
  ┣ 📜 tsconfig.json
  ┗ 📜 README.md
@@ -38,6 +42,7 @@ This project follows a **Client-Server Architecture**, where the backend serves 
 - **Sequelize (ORM for MySQL)**
 - **TypeScript**
 - **MySQL2**
+- **JWT for authentication**
 - **Body-parser** for request handling
 - **CORS** for cross-origin communication
 
@@ -76,8 +81,6 @@ npm install
    DB_DIALECT=mysql
    ```
 
-### Configure the database in `config/database.config.ts` if necessary.
-
 ### Run the API in development mode:
 
 ```sh
@@ -90,21 +93,47 @@ The API will be available at: **[http://localhost:3000/api](http://localhost:300
 
 ## 📌 Available Endpoints
 
+### 🔹 Authentication (`/api/auth`)
+
+- **POST** `/login` - Authenticate and obtain a JWT token.
+  
+  **Note:** The authentication in this project is currently hardcoded for testing purposes. To log in, use the following credentials:
+  
+  ```sh
+  Email: user@test.com
+  Password: password123
+  ```
+  
+  In a real application, user credentials should be validated against a database, and passwords should be securely hashed.
+
 ### 🔹 Employees (`/api/employee`)
 
-- **GET** `/employees` - Get all employees.
-- **GET** `/employee/:id` - Get an employee by ID.
-- **POST** `/employee` - Create a new employee.
-- **PUT** `/employee/:id` - Update an employee.
-- **DELETE** `/employee/:id` - Delete an employee.
+- **GET** `/employees` - Get all employees (**Requires Authentication**).
+- **GET** `/employee/:id` - Get an employee by ID (**Requires Authentication**).
+- **POST** `/employee` - Create a new employee (**Requires Authentication**).
+- **PUT** `/employee/:id` - Update an employee (**Requires Authentication**).
+- **DELETE** `/employee/:id` - Delete an employee (**Requires Authentication**).
 
 ### 🔹 Areas (`/api/area`)
 
-- **GET** `/areas` - Get all areas.
-- **GET** `/area/:id` - Get an area by ID.
-- **POST** `/area` - Create a new area.
-- **PUT** `/area/:id` - Update an area.
-- **DELETE** `/area/:id` - Delete an area.
+- **GET** `/areas` - Get all areas (**Requires Authentication**).
+- **GET** `/area/:id` - Get an area by ID (**Requires Authentication**).
+- **POST** `/area` - Create a new area (**Requires Authentication**).
+- **PUT** `/area/:id` - Update an area (**Requires Authentication**).
+- **DELETE** `/area/:id` - Delete an area (**Requires Authentication**).
+
+---
+
+## 🔑 Authentication Mechanism
+
+- Users authenticate by sending a **POST** request to `/api/auth/login` with valid credentials.
+- If authenticated successfully, the server returns a **JWT token**.
+- To access protected routes, include the **JWT token** in the request headers:
+  
+  ```sh
+  Authorization: Bearer <your_token>
+  ```
+- The `verifyToken` middleware ensures that requests to `/api/employee` and `/api/area` require authentication.
 
 ---
 
@@ -115,5 +144,5 @@ You can find the frontend repository here: [empleados-frontend](https://github.c
 
 ---
 
-This API provides a **scalable and efficient** way to manage employees and areas in an organization. 🚀
+This API provides a **secure, scalable, and efficient** way to manage employees and areas in an organization. 🚀
 
