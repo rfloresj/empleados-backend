@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional } from 'sequelize'
-import sequelize from '../../config/database.config'
+import sequelize from '../config/database.config'
 import Employee from './employee.model'
 
 interface AreaAttributes {
