@@ -1,4 +1,4 @@
-import sequelize from '../../config/database.config';
+import sequelize from '../config/database.config';
 import Area from './area.model';
 import Employee from './employee.model';
 

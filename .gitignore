@@ -46,8 +46,8 @@ jest/
 mocha/
 
 # Ignore Sequelize migrations and seeders (if you use them)
-migrations/
-seeders/
+# migrations/
+# seeders/
 
 # Ignore package-lock.json if using yarn (optional)
 package-lock.json
