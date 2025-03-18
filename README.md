@@ -13,6 +13,7 @@ This project follows a **Client-Server Architecture**, where the backend serves 
 - 🔒 **JWT Authentication**: Secure authentication using JSON Web Tokens.
 - 🛑 **Error Handling & Validations**: Duplicate control and database constraints.
 - 🔒 **CORS Enabled**: Allows communication between the backend and frontend.
+- 🌱 **Database Seeding**: Pre-populated data for testing.
 
 ---
 
@@ -28,6 +29,7 @@ This project follows a **Client-Server Architecture**, where the backend serves 
  ┃ ┣ 📂 models        # Sequelize model definitions
  ┃ ┣ 📂 middlewares   # Middleware for authentication
  ┃ ┣ 📂 routes        # API routes
+ ┃ ┣ 📂 seeders       # Database seed files
  ┃ ┣ 📜 index.ts      # Main server file
  ┣ 📜 package.json
  ┣ 📜 tsconfig.json
@@ -121,6 +123,32 @@ The API will be available at: **[http://localhost:3000/api](http://localhost:300
 - **POST** `/area` - Create a new area (**Requires Authentication**).
 - **PUT** `/area/:id` - Update an area (**Requires Authentication**).
 - **DELETE** `/area/:id` - Delete an area (**Requires Authentication**).
+
+---
+
+## 🌱 Database Seeding
+
+Sequelize allows you to seed the database with initial test data using seeders.
+
+### Running Seeders
+
+1. Ensure your database is set up and migrated:
+   ```sh
+   npx sequelize-cli db:migrate
+   ```
+
+2. Run the seeders to populate the database:
+   ```sh
+   npx sequelize-cli db:seed:all
+   ```
+
+This will populate the database with predefined areas and employees.
+
+### Rolling Back Seeders
+If needed, you can undo the seeded data with:
+   ```sh
+   npx sequelize-cli db:seed:undo:all
+   ```
 
 ---
 
